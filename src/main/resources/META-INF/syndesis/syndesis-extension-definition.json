@@ -1,0 +1,55 @@
+{
+  "schemaVersion" : "v1",
+  "name" : "Log Body with Prefix Extension ",
+  "description" : "Logs a message body with a prefix",
+  "extensionId" : "fuse.online.extension.log-body-with-prefix",
+  "version" : "1.0.0",
+  "actions" : [ {
+      "id" : "log-body-with-prefix",
+      "name" : "Log Body with Prefix",
+      "description": "A simple body log with a prefix",
+      "descriptor" : {
+          "kind" : "BEAN",
+          "entrypoint": "io.syndesis.extension.log.LogAction::process",
+          "inputDataShape": {
+            "kind": "any"
+          },
+          "outputDataShape": {
+            "kind": "any"
+          },
+          "propertyDefinitionSteps": [ {
+            "description": "extension-properties",
+            "name": "extension-properties",
+            "properties": {
+              "prefix": {
+                "componentProperty": false,
+                "deprecated": false,
+                "description": "The Log body prefix message",
+                "displayName": "Log Prefix",
+                "javaType": "String",
+                "kind": "parameter",
+                "required": false,
+                "secret": false,
+                "type": "string"
+              }
+            }
+          } ]
+      },
+      "tags" : [ "extension", "log-body-with-prefix" ],
+      "actionType" : "step"
+  } ],
+  "dependencies" : [ {
+    "type" : "MAVEN",
+    "id" : "io.syndesis.extension:extension-api:jar:1.13.0"
+  }, {
+    "type" : "MAVEN",
+    "id" : "org.apache.camel:camel-core:jar:2.23.2.fuse-7_10_0-00020-redhat-00001"
+  }, {
+    "type" : "MAVEN",
+    "id" : "org.apache.camel:camel-jacksonxml:jar:2.23.2.fuse-7_10_0-00020-redhat-00001"
+  }, {
+    "type" : "MAVEN",
+    "id" : "org.springframework.boot:spring-boot-starter:jar:2.3.12.RELEASE"
+  } ],
+  "extensionType" : "Steps"
+}
